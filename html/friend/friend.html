@@ -14,18 +14,23 @@
    </div>
    <div class="friend_opacity">
        <a href="" onclick="add_friend()">ADD_F</a>
-       <div class="friend_box">
+       <script id="friend" type="text/template">
+       {@each friendList as it}
+        <div class="friend_box">
            <img src="../../res/head.png" alt="" class="friend_logo">
            <div class="friend_detail">
-               <p>yih</p>
-               <p>光阴似箭，岁月如梭光阴似箭，岁月如梭光阴似箭，岁月如梭光阴似箭，岁月如梭光阴似箭，岁月如梭光阴似箭，岁月如梭</p>
+               <p>${it.fName}</p>
+               <p>${it.fContent}</p>
                <div class="common_friend">
-                   <p><span>2</span>位共同好友</p>
-                   <p><img src="../../res/head.png" alt=""><img src="../../res/head.png" alt=""></p>
+                   <p><span>${it.commentNum}</span>位共同好友</p>
+                   <p><img src="../../res/head.png" alt=""><img src="../../res/head.png" alt="">.......</p>
                </div>
            </div>
        </div>
-       <div class="friend_box">
+       {/@each}
+       </script>
+       
+       <!--<div class="friend_box">
            <img src="../../res/head.png" alt="" class="friend_logo">
            <div class="friend_detail">
                <p>yih</p>
@@ -35,21 +40,49 @@
                    <p><img src="../../res/head.png" alt=""><img src="../../res/head.png" alt="">.......</p>
                </div>
            </div>
-       </div>
+       </div>-->
    </div>
 
 </body>
-<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/constants.js"></script>
+<script type="text/javascript" src="../../script/zepto.js"></script>
+<script type="text/javascript" src="../../script/juicer.js"></script>
 <script type="text/javascript">
 
     apiready = function(){
-		
+		//请求好友
+		friend();
     };
     function add_friend(){
         api.openWin({
 					    name: 'add_friend',
 					    url: 'add_friend.html'
 					});
+    }
+    //请求好友ajax
+    function friend(){
+        var userId = localStorage.getItem('userId');
+	    api.ajax({
+	       url:FRIEND,
+	       method:'get',
+	       data:{
+	          value:{
+	             useId : useId
+	          }
+	       }
+	    },function(ret , err){
+	       if(ret.code){
+	          var data = ret.data,
+	              friendTpl = $('#friend').html(),
+	              friendListHtml = juicer(friendTpl, {friendList: data.friendList});
+	       }else{
+	        console.log("ajax错误");
+	       }
+	    
+	    
+	    });
+    
     }
 </script>
 </html>

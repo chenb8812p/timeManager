@@ -14,7 +14,7 @@
   <div class="time_list">
     <span class="time_title">时间分配详情：</span>
     <script id="plan_time" type="text/template">
-      {@each time_list as it}
+      {@each planTimeList as it}
         <ul>
             <li class="li_study"><b>学习：</b><span></span><em>${it.P_study}</em></li>
             <li class="li_reset"><b>休息：</b><span></span><em>${it.P_reset}</em></li>
@@ -24,43 +24,52 @@
       {/@each}
     </script>     
   </div>
-<!-- 学习 -->
-  <div class="plan_time clear">
-      <div class="left_time">
-          <time>6:30</time>
-          <span class="study">学习</span>
-      </div>
-      <div class="right_time">
-          <section class="study_item">我要好好学习我要好好学习我要好好学习我要好好学习我要好好学习我要好好学习</section>
-          <a href="" class="a_start" >开始</a>
-      </div>
-  </div>
-  <!-- 休息 -->
-   <div class="plan_time clear">
-      <div class="left_time">
-          <time>6:30</time>
-          <span class="rest">休息</span>
-      </div>
-      <div class="right_time">
-          <section class="rest_item">我要好好学习我要好好学习我要好好学习我要好好学习我要好好学习我要好好学习</section>
-          <a href="" class="a_complete">已完成</a>
-      </div>
-  </div>
-  <!-- 睡觉 -->
-  <div class="plan_time clear">
-      <div class="left_time">
-          <time>6:30</time>
-          <span class="sleep">睡觉</span>
-      </div>
-      <div class="right_time">
-          <section class="sleep_item">我要好好学习我要好好学习我要好好学习我要好好学习我要好好学习我要好好学习</section>
-          <a href="" class="a_complete">已完成</a>
-      </div>
-  </div>
+ <script id="plan_time_s" type="text/template">
+  {@each planTimeSList as it}
+        <div class="plan_time clear" id="${it.planId}">
+		      <div class="left_time">
+		          <time>${it.time}</time>
+		          <!-- 学习 -->
+		          {@if it.type == 0}
+		           <span class="study">学习</span>
+		          {/@if}
+		          <!-- 休息 -->
+		          {@if it.type == 1}
+		           <span class="rest">休息</span>
+		          {/@if}
+		          <!-- 睡觉 -->
+		          {@if it.type == 2}
+		           <span class="sleep">睡觉</span>
+		          {/@if}
+		      </div>
+		      <div class="right_time">
+		          {@if it.contentS == 0}
+		             <section class="study_item">${it.content}</section>
+		          {/@if}
+		          {@if it.contentS == 1}
+		             <section class="rest_item">${it.content}</section>
+		          {/@if}
+		          {@if it.contentS == 2}
+		             <section class="sleep_item">${it.content}</section>
+		          {/@if}
+		          {@if it.state == 0}
+		            <a href="" class="a_start" >开始</a>
+		          {/@if}
+		          {@if it.state == 1}
+		            <a href="" class="a_complete" >完成</a>
+		          {/@if}
+		          {@if it.state == 2}
+		            <a href="" class="a_complete" >未完成</a>
+		          {/@if}
+		      </div>
+		  </div>
+  {/@each}
+</script>
+
 </body>
 
 <script type="text/javascript" src="../../script/api.js"></script>
-<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/constants.js"></script>
 <script type="text/javascript" src="../../script/zepto.js"></script>
 <script type="text/javascript" src="../../script/juicer.js"></script>
 
@@ -83,7 +92,9 @@
 
         }); 
       // 
-      if (userId) {
+      if (localStorage.getItem('userId')) {
+        
+        // 请求时间百分比和时间计划
         time_p();
 
       }else{
@@ -94,9 +105,34 @@
       };
     };
 
-  // 请求时间百分比的ajax
+  // 请求时间百分比和时间计划的ajax
   function time_p(){
-
+	  // 用户id
+	  var userId = localStorage.getItem('userId');
+      api.ajax({
+            url: TIME_P,
+            method: 'get',
+            data: {
+                values: { 
+                  userId: userId
+                }
+            }
+            },function(ret, err){
+              if (ret.code == 0) {
+                  console.log("code == 0");
+                  var data = rs.data,
+                      //时间分配详情                  
+					  planTimeTpl = $('#plan_time').html(),
+					  planTimeListHtml = juicer(planTimeTpl, {planTimeList: data.planTimeList}),
+					  //时间计划
+					  planTimeSTpl = $('#plan_time_s').html(),
+					  planTimeSListHtml = juicer(planTimeSTpl, {planTimeSList: data.planTimeSList}),
+					  
+              } else {
+//                api.alert({msg: ret.errMsg});
+                  console.log("ajax没有发送");
+              }
+           });
   };
 </script>
 </html>

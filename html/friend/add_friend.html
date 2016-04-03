@@ -29,18 +29,19 @@
         </div>  
    </div>
    <form action="" class="mask_form none">
-          <input type="hidden" value =""/>
+          <input type="hidden" value ="" class="hidden_v"/>
           <textarea name="" id="" cols="30" rows="10" placeholder="输入申请信息"></textarea>
           <input  type="button" value="取消" onclick="hide(this)"/>
           <input type="submit" value="确定">
     </form>
 </body>
-<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/constants.js"></script>
 <script type="text/javascript" src="../../script/zepto.js"></script>
 <script type="text/javascript">
 
     apiready = function(){
-		
+		transferId();
     };
     function add_f( obj ){
      var f_id  = $(obj).prev().val;
@@ -49,6 +50,10 @@
     function hide(obj){
       $(obj).parent().addClass('none');
     };
-    
+    function transferId(){
+      var useId = localStorage.getItem('userId');
+      $('.hidden_v').val(useId);
+    };
+   
 </script>
 </html>

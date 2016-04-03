@@ -93,22 +93,22 @@
 	height: 3.5rem;
 	margin-top: 1rem;
 }
-.other_rank{
+.other_rank,.friend_rank{
 	width:90%;
 	border-top:1px solid #b2b2b2; 
 	margin: 1rem auto;
 }
-.other_rank li{
+.other_rank li,.friend_rank li{
 	height: 3.3rem;
 	padding-top: 0.3rem;
 	border-bottom: 1px solid #b2b2b2;
 }
-.other_rank li span{
+.other_rank li span,.friend_rank li span{
 	float:left;
 	margin-top: 0.8rem; 
 	padding-left: 1rem;
 }
-.other_rank li img{
+.other_rank li img,.friend_rank li img{
 	width:3rem;
 	height: 3rem;
 	float:left;
@@ -123,4 +123,7 @@
 }
 .rank_integral{
 	width:3.5rem;
+}
+.none{
+   display:none;
 }

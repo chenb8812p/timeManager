@@ -4,76 +4,144 @@
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
-    <title>APP</title>
+    <title>ranking</title>
     <link rel="stylesheet" type="text/css" href="../../css/common.css" />
     <link rel="stylesheet" type="text/css" href="../../css/ranking.css" />
     <script type="text/javascript" src="../../script/api.js"></script>
 </head>
 <body>
      <div class="my_ranking">
-        <div class="my_order">
-            <em>9</em>
-            <span>排名</span>
-        </div>
-        <div class="my_logo">
-            <img src="../../res/head.png" alt="我的头像">
-            <span>yih</span>
-        </div>
-         <div class="my_order">
-            <em>900</em>
-            <span>总积分</span>
-         </div>
+	     <script id="myRank" type="text/template">
+	     {@each myList as it}
+	        <div class="my_order">
+	            <em>${it.ranking}</em>
+	            <span>排名</span>
+	        </div>
+	        <div class="my_logo">
+	            <img src="../../res/head.png" alt="我的头像">
+	            <span>${it.useName}</span>
+	        </div>
+	         <div class="my_order">
+	            <em>${it.integral}</em>
+	            <span>总积分</span>
+	         </div>
+	      {/@each}
+	     </script>  
      </div>
      <div class="rank_list">
          <ul class="switch_a">
-            <li class="a_click" onclick="switch_a(this)"><a>周赛</a></li>
-            <li onclick="switch_a(this)"><a>好友</a></li>
+            <li class="a_click" onclick="switch_a(this,0)"><a>周赛</a></li>
+            <li onclick="switch_a(this,1)"><a>好友</a></li>
          </ul>
-         <div class="frist_rank ">
-             <div class="two_rank">
-                 <img src="../../res/head.png" alt="我的头像">
-                 <span>第二名</span>
-                 <span>yih</span>
-                 <em>900</em>
-             </div>
-             <div class="one_rank">
-                 <img src="../../res/head.png" alt="我的头像">
-                 <span>第一名</span>
-                 <span>yih</span>
-                 <em>900</em>
-             </div>
-             <div class="three_rank">
-                 <img src="../../res/head.png" alt="我的头像">
-                 <span>第三名</span>
-                 <span>yih</span>
-                 <em>900</em>
-             </div>
+         <div class="frist_rank">
+            <script id="fristRank" type="text/template">
+            {@each fristList as it}
+	             <div class="two_rank">
+	                 <img src="../../res/head.png" alt="我的头像">
+	                 <span>第二名</span>
+	                 <span>${it.two_name}</span>
+	                 <em>${it.two_integral}</em>
+	             </div>
+	             <div class="one_rank">
+	                 <img src="../../res/head.png" alt="我的头像">
+	                 <span>第一名</span>
+	                 <span>${it.one_name}</span>
+	                 <em>${it.one_integral}</em>
+	             </div>
+	             <div class="three_rank">
+	                 <img src="../../res/head.png" alt="我的头像">
+	                 <span>第三名</span>
+	                 <span>${it.three_name}</span>
+	                 <em>${it.three_integral}</em>
+	             </div>
+            {/@each}
+            </script> 
          </div>
          <ul class="other_rank clear">
+           <script id="otherRank" type="text/template">
+           {@each otherList as it}
              <li>
-                 <span class="rank_num">#4</span>
+                 <span class="rank_num">${it.ranks}</span>
                  <img src="../../res/head.png" alt="">
-                 <span class="rank_name">yih</span>
-                 <span class="rank_integral">500</span>
+                 <span class="rank_name">${it.otherName}</span>
+                 <span class="rank_integral">${it.otherIntegral}</span>
              </li>
+           {/@each}
+           </script>  
          </ul>
-         
+        <!--我的好友排名-->    
+         <ul class="friend_rank clear none">
+           <script id="friendRank" type="text/template">
+           {@each friendList as it}
+             <li>
+                 <span class="rank_num">${it.ranks}</span>
+                 <img src="../../res/head.png" alt="">
+                 <span class="rank_name">${it.friendName}</span>
+                 <span class="rank_integral">${it.friendIntegral}</span>
+             </li>
+           {/@each}
+           </script>
+         </ul>        
      </div>
 
 </body>
-<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/constants.js"></script>
+<script type="text/javascript" src="../../script/zepto.js"></script>
+<script type="text/javascript" src="../../script/juicer.js"></script>
 <script type="text/javascript">
 
     apiready = function(){
-		
+        //请求排名
+		ranking();
     };
-    function switch_a(obj){
-//     console.log("执行了！！！");
+    function switch_a(obj,index){
         var switch_a = $api.domAll('.switch_a li');
 	    for (var j = 0 ; j < switch_a.length ; j++){
 	        $api.removeCls(switch_a[j], 'a_click');
 	    }
 	    $api.addCls(obj, 'a_click');
+	    if(index == 0){
+	      $('.other_rank').removeClass('none');
+	      $('.friend_rank').addClass('none');
+	    }else if(index == 1){
+	       $('.other_rank').addClass('none');
+	       $('.friend_rank').removeClass('none');
+	    }
+    };
+    //请求排名  
+    function ranking(){
+	     var userId = localStorage.getItem('userId');
+	     $api.ajax({
+	        url: RANKING,
+	        method: 'get',
+	        data: {
+	           value:{
+	             useId:useId
+	           }
+	        }
+	     },function(ret , err){
+	        if(ret.code == 0){
+	           var data = rs.data,
+	              //我的排名             
+				  myRankTpl = $('#myRank').html(),
+				  myListHtml = juicer(myRankTpl, {myList: data.myList}),
+				  //前三名
+				  fristRankTpl = $('#fristRank').html(),
+				  fristListHtml = juicer(fristRankTpl, {fristList: data.fristList}),
+				  //其他
+				  otherRankTpl = $('#otherRank').html(),
+				  otherListHtml = juicer(otherRankTpl, {otherList: data.otherList}),
+				  //我的好友
+				  friendRankTpl = $('#friendRank').html(),
+				  friendListHtml = juicer(friendRankTpl, {friendList: data.friendList}),
+	            
+	        }else{
+	//                api.alert({msg: ret.errMsg});
+	            console.log("ajax没有发送");
+	         }
+	     });
+    
     };
 </script>
 </html>
