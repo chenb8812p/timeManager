@@ -1,0 +1,27 @@
+.side_hide ul{
+	padding-top: 3rem;
+	width:45%;
+	background-color: #a291f2;
+	text-align: center;
+	color:#ffffff;
+
+}
+.s_li{
+	height: 5.5rem;
+	line-height: 5.5rem;
+	
+}
+.side_hide img{
+	width:6.5rem;
+	height: 6.5rem;
+	border-radius: 50%;
+}
+.side_hide span{
+	display: block;
+	font-size:0.8rem;
+}
+.side_hide{
+	width:100%;
+background-color: #ebebeb;
+	font-size:1.2rem;
+}

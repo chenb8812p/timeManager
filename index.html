@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>plan</title>
+		<link rel="stylesheet" type="text/css" href="./css/common.css" />
+		<link rel="stylesheet" type="text/css" href="./css/plan.css" />
+		<script type="text/javascript" src="script/api.js"></script>
+	</head>
+	<body>
+		<div class="top_fixed">
+			<header>
+				<a href="" class="a_set"></a>time_M<a href=""class="a_add" onclick="open_add()"></a>
+			</header>
+			<div class="input_box">
+				<input type="text" placeholder="your account" id="under_line"/>
+				<input type="text"  placeholder="the declaration of time"/>
+			</div>
+		    <ul class="switch_nav">
+		        <li onclick="change_win(this, 0)" class="nav_hover"><a>plan</a></li>
+		        <li onclick="change_win(this, 1)"><a>ranking</a></li>
+		        <li onclick="change_win(this, 2)"><a>friend</a></li>
+		    </ul>
+		</div>
+		<script type="text/javascript">
+			apiready = function(){
+                //打开框架			
+				var $header = $api.dom('.top_fixed');
+				$api.fixIos7Bar($header);
+				var $body = $api.dom('body');
+				var header_h = $api.offset($header).h;
+				var body_h = $api.offset($body).h;
+				var $switch_nav = $api.dom('.switch_nav');
+				var nav_h = $api.offset($switch_nav).h;
+				var y_h = header_h + (nav_h/2);
+				api.openFrameGroup({
+					name : 'index_frameGroup',
+					bounces : false,
+					reload : true,
+					showProgress : true,
+					rect : {
+						x : 0,
+						y : y_h,
+						w : 'auto',
+						h : 'auto'
+					},
+					scrollEnabled : true,
+					index : 0,
+					frames : [{
+						name : 'plan',
+						url : 'html/plan/plan_time.html',
+						bounces : false,
+						opaque : true,
+						reload : true
+					}, {
+						name : 'ranking',
+						url : 'html/ranking/ranking.html',
+						bounces : false,
+						opaque : true,
+						reload : true
+					}, {
+						name : 'friend',
+						url : 'html/friend/friend.html',
+						bounces : false,
+						opaque : true,
+						reload : true
+					}]
+				}, function(ret, err) {
+					var index = ret.index;
+					console.log(index);
+					var nav_a = $api.domAll('.switch_nav li');
+					for (var i = 0; i < nav_a.length; i++) {
+					    console.log(nav_a[i]);
+						$api.removeCls(nav_a[i], 'nav_hover');
+						if (i == index) {
+						   $api.addCls(nav_a[i], 'nav_hover');
+					    }
+					}
+					
+				});
+                
+                         		  	   
+		  	};
+		  	//导航栏点击切换				
+			    function change_win(obj , index){
+			        var $footerBar = $api.domAll('.switch_nav li');
+			        for (var j = 0 ; j < $footerBar.length ; j++){
+			            $api.removeCls($footerBar[j], 'nav_hover');
+			        }
+			        $api.addCls(obj, 'nav_hover');
+			        api.setFrameGroupIndex({
+			            name: 'index_frameGroup',
+			            index: index
+			        });
+		  	   };
+              //点击设置打开侧滑页面
+              //点击添加打开添加页面
+              function open_add(){
+                 api.openWin({
+					    name: 'add_plan',
+					    url: 'html/plan/add_plan.html'
+					});
+              };
+		</script>
+	</body>
+</html>

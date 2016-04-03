@@ -1,0 +1,61 @@
+.friend_bg{
+	background: url('../res/friend_bg.jpg') repeat-y;
+	background-size:100%;
+	width:100%;
+	min-height: 50rem;	
+}
+.friend_opacity{
+	padding-top: 2rem;
+	position: absolute;
+    top:0;
+	z-index: 200;
+	background-color: #7471bd;
+	opacity: 0.5;
+	width:100%;
+	min-height: 50rem;
+}
+.friend_box{
+	position:relative;
+	width:95%;
+	margin:3rem auto;
+}
+.friend_box img{
+	border-radius: 50%;
+}
+.friend_logo{
+	position: absolute;
+	width:4rem;
+	height: 4rem;
+	top:-1.3rem;
+	left:0.5rem;
+}
+.friend_detail{
+   width:79%;
+   padding-left: 1.5rem;
+   padding-top:1rem; 
+   background-color:#ffffff; 
+   margin-left: 3rem;
+   border-radius: 1rem;
+
+}
+.common_friend{
+	border-top:1px solid #a3a3a1;
+	width:95%;
+	margin-top:0.5rem;
+}
+.common_friend img{
+	width:2rem;
+	height: 2rem;
+	margin-right: 0.5rem;
+}
+.friend_opacity a{
+	float:right;
+	margin-right: 1rem;
+	width:4rem;
+	height:2rem;
+	line-height: 2rem;
+	text-align: center;
+	background-color: #ffffff;
+	border-radius: 0.5rem;
+
+}

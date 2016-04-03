@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>APP</title>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/ranking.css" />
+    <script type="text/javascript" src="../../script/api.js"></script>
+</head>
+<body>
+     <div class="my_ranking">
+        <div class="my_order">
+            <em>9</em>
+            <span>排名</span>
+        </div>
+        <div class="my_logo">
+            <img src="../../res/head.png" alt="我的头像">
+            <span>yih</span>
+        </div>
+         <div class="my_order">
+            <em>900</em>
+            <span>总积分</span>
+         </div>
+     </div>
+     <div class="rank_list">
+         <ul class="switch_a">
+            <li class="a_click" onclick="switch_a(this)"><a>周赛</a></li>
+            <li onclick="switch_a(this)"><a>好友</a></li>
+         </ul>
+         <div class="frist_rank ">
+             <div class="two_rank">
+                 <img src="../../res/head.png" alt="我的头像">
+                 <span>第二名</span>
+                 <span>yih</span>
+                 <em>900</em>
+             </div>
+             <div class="one_rank">
+                 <img src="../../res/head.png" alt="我的头像">
+                 <span>第一名</span>
+                 <span>yih</span>
+                 <em>900</em>
+             </div>
+             <div class="three_rank">
+                 <img src="../../res/head.png" alt="我的头像">
+                 <span>第三名</span>
+                 <span>yih</span>
+                 <em>900</em>
+             </div>
+         </div>
+         <ul class="other_rank clear">
+             <li>
+                 <span class="rank_num">#4</span>
+                 <img src="../../res/head.png" alt="">
+                 <span class="rank_name">yih</span>
+                 <span class="rank_integral">500</span>
+             </li>
+         </ul>
+         
+     </div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+
+    apiready = function(){
+		
+    };
+    function switch_a(obj){
+//     console.log("执行了！！！");
+        var switch_a = $api.domAll('.switch_a li');
+	    for (var j = 0 ; j < switch_a.length ; j++){
+	        $api.removeCls(switch_a[j], 'a_click');
+	    }
+	    $api.addCls(obj, 'a_click');
+    };
+</script>
+</html>

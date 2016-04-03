@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>增加时间安排</title>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/add_plan.css" />
+    <script type="text/javascript" src="../../script/zepto.js"></script>
+</head>
+<body>
+      <header class="add_title"><a href="">《返回</a>添加事件</header>
+      <form action="" class="time_form">
+          <div class="thing_name">
+              <span>事件名称:</span>
+              <input type="text" placeholder="早起去图书馆"/>
+          </div>
+          <div class="select_type">
+              <span>事件类型:</span>
+              <select name="" id="">
+                  <option value="1">学习</option>
+                  <option value="2">睡觉</option>
+                  <option value="3">休息</option>
+                  <option value="4">其余</option>
+              </select>
+          </div>
+          <div>
+              <span>选择时间:</span>
+              <div class="select_time">
+                  <p>
+                     <span class="a_year">2015年</span>
+                     <span class="a_month">1月</span>
+                     <span class="a_day">1日</span>
+                     <span class="week">星期日</span>
+                  </p>
+                  <div class="time_box">
+                      <div class="J_year">
+                          <span>2015</span>
+                          <span class="selected_time">2016</span>
+                          <span>2017</span>
+                      </div>
+                      <div>
+                          <span>2</span>
+                          <span class="selected_time">3</span>
+                          <span>4</span>
+                      </div>
+                      <div>
+                          <span>14</span>
+                          <span class="selected_time">15</span>
+                          <span>16</span>
+                      </div>
+                  </div>
+              </div>
+              <!--<div class="select_time">
+                  <p>
+                     <span class="a_hour">12:</span>
+                     <span class="a_minute">30:</span>
+                     <span class="a_sec">00</span>
+                  </p>
+                  <div class="time_box">
+                      <div class="J_hour">
+                          <span>11</span>
+                          <span class="selected_time">12</span>
+                          <span>13</span>
+                      </div>
+                      <div>
+                          <span>29</span>
+                          <span class="selected_time">30</span>
+                          <span>31</span>
+                      </div>
+                      <div>
+                          <span>59</span>
+                          <span class="selected_time">00</span>
+                          <span>01</span>
+                      </div>
+                  </div>
+              </div>-->
+          </div>
+          <input type="button" value="取消" class="a_button "/>
+          <input type="submit" value="确定"class="a_submit" />
+      </form>
+
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/zepto.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+    };
+     var n = 0;
+     var myDate = new Date();
+     var year = myDate.getFullYear();        //获取当前年份(2位)
+//   console.log(year);
+      var arr = [];
+ //禁用手机默认的触屏滚动行为 
+
+document.addEventListener('touchmove', function(event) { 
+
+    event.preventDefault(); 
+
+}, false); 
+
+$('.selected_time').on('touch' , function(ev){
+
+   var obj =ev.currentTarget;
+   var span_arr = $(obj).text();
+   touchSatrtFunc(ev);
+
+});
+//touchstart事件 
+function touchSatrtFunc(evt) { 
+
+    try { 
+
+        evt.preventDefault(); //阻止触摸时浏览器的缩放、滚动条滚动等 
+        var touch = evt.touches[0]; //获取第一个触点 
+        var x = Number(touch.pageX); //页面触点X坐标 
+        var y = Number(touch.pageY); //页面触点Y坐标 
+        console.log(x);
+        console.log(y);
+        //记录触点初始位置 
+        startX = x; 
+
+        startY = y; 
+
+    } catch (e) { 
+
+        alert('touchSatrtFunc：' + e.message); 
+
+    } 
+
+} 
+console.log("执行了");
+
+  
+
+  
+
+
+
+
+
+//     $('.selected_time').swipeUp(function(ev){
+// 			ev.preventDefault();
+//   		    var obj =ev.currentTarget;
+// 			if(n = 0){
+			           
+// 			           $(obj).prev().text(parseInt(year));
+// 			           $(obj).text(parseInt(year+1));
+// 			           $(obj).next().text(parseInt(year+2));
+// 			           arr.push(n++);
+// 			           console.log(arr);
+// 			           console.log('arr');
+// 			}else{
+			          
+// 			           var top = arr[0];
+// //			           console.log(top);	
+// 			           arr.push(top++);
+// 			           $(obj).prev().text(parseInt(year)+top);
+// 			           $(obj).text(parseInt(year+1)+top);
+// //			           console.log($(obj).text());
+// 			           $(obj).next().text(parseInt(year+2)+top);
+			           
+
+// 			}
+// //			n++;
+					
+//       })
+     
+     //监听向下滑动事件    
+//   $('.selected_time').swipeDown(function(ev){
+//			document.addEventListener('touchmove', function (event) {
+//			 	event.preventDefault();
+//			}, false);
+//			
+//			console.log(span_arr);
+//    })
+   
+
+</script>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>plan_time</title>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/plan_time.css" />
+   
+   <!--  <script type="text/javascript" src="../../script/plan_time.js"></script> -->
+</head>
+<body>
+  <div class="time_list">
+    <span class="time_title">时间分配详情：</span>
+    <script id="plan_time" type="text/template">
+      {@each time_list as it}
+        <ul>
+            <li class="li_study"><b>学习：</b><span></span><em>${it.P_study}</em></li>
+            <li class="li_reset"><b>休息：</b><span></span><em>${it.P_reset}</em></li>
+            <li class="li_sleep"><b>睡觉：</b><span></span><em>${it.P_sleep}</em></li>
+            <li class="li_rest"><b>其余：</b><span></span><em>${it.P_rest}</em></li>
+        </ul>
+      {/@each}
+    </script>     
+  </div>
+<!-- 学习 -->
+  <div class="plan_time clear">
+      <div class="left_time">
+          <time>6:30</time>
+          <span class="study">学习</span>
+      </div>
+      <div class="right_time">
+          <section class="study_item">我要好好学习我要好好学习我要好好学习我要好好学习我要好好学习我要好好学习</section>
+          <a href="" class="a_start" >开始</a>
+      </div>
+  </div>
+  <!-- 休息 -->
+   <div class="plan_time clear">
+      <div class="left_time">
+          <time>6:30</time>
+          <span class="rest">休息</span>
+      </div>
+      <div class="right_time">
+          <section class="rest_item">我要好好学习我要好好学习我要好好学习我要好好学习我要好好学习我要好好学习</section>
+          <a href="" class="a_complete">已完成</a>
+      </div>
+  </div>
+  <!-- 睡觉 -->
+  <div class="plan_time clear">
+      <div class="left_time">
+          <time>6:30</time>
+          <span class="sleep">睡觉</span>
+      </div>
+      <div class="right_time">
+          <section class="sleep_item">我要好好学习我要好好学习我要好好学习我要好好学习我要好好学习我要好好学习</section>
+          <a href="" class="a_complete">已完成</a>
+      </div>
+  </div>
+</body>
+
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/zepto.js"></script>
+<script type="text/javascript" src="../../script/juicer.js"></script>
+
+<script type="text/javascript">
+
+    apiready = function(){
+      // 打开侧边滑栏
+      api.openSlidLayout({
+            type: 'right',
+            leftEdge: 173,
+            fixedPane: {
+                name: 'side_hide',
+                url: 'side_hide.html'
+            },
+            slidPane: {
+                name: 'index',
+                url: '../../index.html'
+            }
+        }, function (ret) {
+
+        }); 
+      // 
+      if (userId) {
+        time_p();
+
+      }else{
+        api.openWin({
+          name: 'time_logo',
+              url: '../student_logo.html'
+        });
+      };
+    };
+
+  // 请求时间百分比的ajax
+  function time_p(){
+
+  };
+</script>
+</html>

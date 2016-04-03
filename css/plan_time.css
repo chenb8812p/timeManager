@@ -1,0 +1,147 @@
+
+.plan_time{
+	padding-left:0.5rem;
+}
+.left_time{
+	position: relative;
+	height: 2rem;
+	line-height: 2rem;
+	float:left;
+	width: 16%;
+    
+}
+.left_time time{
+	font-size: 1.1rem;
+
+}
+.left_time span{
+	position: absolute;
+	right: -1.2rem;
+	border-radius: 2rem; 
+	width: 2rem;
+    height: 2rem;
+	text-align: center;
+	line-height: 2rem;
+	color:#ffffff;
+	font-size: 0.9rem;
+}
+.study{
+	background-color: #f48c8a;
+}
+.rest{
+	background-color: #f5a92a;
+}
+.sleep{
+	background-color: #71ce0b;
+}
+.right_time{
+	width: 83%;
+    float: right;
+    border-left: 1px solid #000000;
+	
+}
+.right_time section{
+	margin-bottom: 1rem;
+	margin-top: 0.2rem;
+	width:64%;
+	margin-left:1.2rem;
+	border-radius:5px; 
+	
+	padding: 0.2rem;
+	float:left;
+}
+.study_item{
+	border: 1px solid #f48c8a;
+}
+.rest_item{
+	border: 1px solid #f5a92a;
+}
+.sleep_item{
+	border: 1px solid #71ce0b;
+}
+.right_time a{
+	width:20%;
+	margin-top: 0.2rem;
+	margin-right: 0.4rem;
+	float:right;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	text-align: center;
+	border-radius:14px; 
+}
+.a_start{
+	color:#a87f56;
+	border:1px solid #a87f56;
+}
+.a_complete{
+	color:#ffffff;
+	background-color: #a87f56;
+}
+.time_list li{
+	width:90%;
+	height: 1.5rem;
+	line-height:1.5rem;
+	margin-bottom: 0.5rem;
+	border-radius:0.5rem;
+	padding-left:0.8rem;
+
+}
+.time_list ul{
+	width:100%;
+	text-align: center;
+}
+.time_list ul b{
+	font-size: 0.8rem;
+	color:#878585;
+}
+.time_list ul b,.time_list ul span{
+	float:left;
+}
+.time_list ul span{
+	height: 1rem;
+	margin-top: 0.2rem;
+	border-radius:0.5rem; 
+}
+.li_study,.li_reset,.li_sleep,.li_rest{
+	display: inline-block;
+	height: 1rem;
+	
+}
+.li_study{
+	border: 1px solid #f48c8a;
+}
+.li_reset{
+	border: 1px solid #f5a92a;
+}
+.li_sleep{
+	border: 1px solid #71ce0b;
+}
+.li_rest{
+	border: 1px solid #a87f56;
+}
+.li_study span{
+	border: 1px solid #f48c8a;
+	width:20%;
+	background-color: #f48c8a;
+
+}
+.li_reset span{
+	border: 1px solid #f5a92a;
+	background-color: #f5a92a;
+	width:30%;
+}
+.li_sleep span{
+	border: 1px solid #71ce0b;
+	background-color: #71ce0b;
+	width:10%;
+}
+.li_rest span{
+	border: 1px solid #a87f56;
+	background-color: #a87f56;
+	width:40%;
+}
+.time_title{
+	margin-bottom: 0.5rem;
+	display: block;
+}
+

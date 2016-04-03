@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>time_logo</title>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/logo.css" />
+</head>
+<body>
+  <div class="logo_bg"></div>
+  <div class="logo_opacity">
+    <section class="logo_text">
+      <span>welcome</span>
+      <p>time is a versatile performer. it flies, marches on , healsall wounds, runs out and will tell, leonhard frank, cerman novelist</p>
+    </section>
+    <!-- logo/register -->
+    <div class="logo_box">
+      <a class="logo_a">login</a>
+      <a class="register_a">register</a>
+    </div>
+    <!-- logo form / register form -->
+    <div class="log_reg">
+     <form action="" class="log_form none">
+       <p class="p_text">login</p>
+       <p><input type="text" placeholder="usename"></p>
+       <p><input type="password" placeholder="password"></p>
+       <p><input type="checkbox"><label for="">remember me</label></p>
+       <p class="clear logo_go"><input type="button" value="go    >>"/></p>
+     </form>
+     <form action="" class="reg_form none">
+       <p class="p_text">register</p>
+       <p><input type="text" placeholder="usename"></p>
+       <p><input type="password" placeholder="password" class="psw"></p>
+       <p><input type="password" placeholder="repassword"></p>
+       <p class="clear reg_go"><input type="button" value="register    >>"/></p>
+     </form>
+  </div>
+  </div>
+</body>
+
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/zepto.js"></script>
+<script type="text/javascript" src="../../script/constants.js"></script>
+<script type="text/javascript">
+  //logo_ajax 
+  $('.logo_go input').on('click', function(){
+    var 
+        usename = $('.log_form input[type="text"]').val(),
+        password = $('.log_form input[type="password"]').val();
+	    if(usename != '' && password != '' && usename != null && password != null){
+          api.ajax({
+            url: '192.168.137.1/json/logo.json',
+            method: 'get',
+            data: {
+                values: { 
+                  usename: usename,
+                  password: password
+                }
+            }
+            },function(ret, err){
+              if (ret.code == 0) {
+                  console.log("code == 0");
+                  localStorage.setItem('userId',ret.data.userId);
+                  window.location.href = '../../index.html';
+                  api.sendEvent({
+                      name: 'Login'
+                  });
+                  api.alert({msg: "登陆成功！"});
+              } 
+              else {
+//                api.alert({msg: ret.errMsg});
+                  console.log("ajax没有发送");
+              }
+           });
+        }else{
+          api.toast({
+              msg: '用户名或密码不能为空！！',
+              duration: 2000,
+              location: 'bottom'
+          });
+        };
+  });
+
+  // register_ajax
+  $('.reg_go input').on('click', function(){
+    var 
+       r_usename = $('.reg_form input').val(),
+       r_password = $('.psw').val(),
+       r_psw = $('.psw').next().val();
+    // if(r_usename != '' && r_password != '' && r_psw != ''){
+      
+    // }else{
+
+    // };
+
+
+  });
+  $('.logo_a').on('click' , function(ev){
+    $('.log_form').show();
+    $('.logo_text').hide(); 
+    $('.logo_box').hide();
+  });
+  $('.register_a').on('click' , function(ev){
+    $('.reg_form').show();
+    $('.logo_text').hide();
+    $('.logo_box').hide();
+  });
+  // logo_ajax
+  
+</script>
+</html>

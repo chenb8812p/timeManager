@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>添加朋友</title>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/add_friend.css"/>
+</head>
+<body>
+   <header class="add_title"><a href="">《返回</a>添加好友</header>
+   <div class="add_friend_bg"></div>
+   <div class="add_friend_box">
+       <div class="seacher_box">
+            <input type="text" placeholder="输入对方id或名称"/>
+            <a onclick="add_f(this)">添加</a>
+        </div>
+        <div class="recommend_friend">
+          <span>推荐好友：</span>
+          <ul>
+              <li><img src="../../res/head.png" alt=""><span>yih</span></li>
+              <li><img src="../../res/head.png" alt=""><span>yih</span></li>
+              <li><img src="../../res/head.png" alt=""><span>yih</span></li>
+              <li><img src="../../res/head.png" alt=""><span>yih</span></li>
+              <li><img src="../../res/head.png" alt=""><span>yih</span></li>
+              <li><img src="../../res/head.png" alt=""><span>yih</span></li>
+          </ul>  
+        </div>  
+   </div>
+   <form action="" class="mask_form none">
+          <input type="hidden" value =""/>
+          <textarea name="" id="" cols="30" rows="10" placeholder="输入申请信息"></textarea>
+          <input  type="button" value="取消" onclick="hide(this)"/>
+          <input type="submit" value="确定">
+    </form>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../../script/zepto.js"></script>
+<script type="text/javascript">
+
+    apiready = function(){
+		
+    };
+    function add_f( obj ){
+     var f_id  = $(obj).prev().val;
+     $('.mask_form').removeClass('none');
+    };
+    function hide(obj){
+      $(obj).parent().addClass('none');
+    };
+    
+</script>
+</html>

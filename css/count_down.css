@@ -1,0 +1,51 @@
+body{
+   background-color:#000000;
+   color:#ffffff;
+   font-size:2rem;
+   padding-top:3rem;
+
+}
+.c_header{
+  margin-bottom:3rem;
+}
+.J_count_down{
+  font-size:5rem;
+  text-align:center;
+}
+.c_text{
+  margin-left:3rem;
+}
+.c_tip{
+   margin-top:2rem;
+   font-size:1rem;
+   padding-left:0.5rem;
+}
+.c_tip p{
+   margin-left:0.8rem;
+   margin-top:0.5rem;
+}
+.none{
+  display:none;
+}
+.c_succed{
+  background-color:#ffffff;
+  color:red;
+  font-size:1.5rem;
+}
+.c_succed p{
+  margin-top:2rem;
+}
+
+.c_lose{
+  background-color:#ffffff;
+  color:red;
+  font-size:1.5rem;
+}
+.c_lose p{
+  margin-top:2rem;
+}
+.c_lose span{
+   float:right;
+  margin-top:0.8rem;
+  color:black;
+}

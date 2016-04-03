@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>好友列表</title>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/friend.css" />
+    <script type="text/javascript" src="../../script/api.js"></script>
+</head>
+<body>
+   <div class="friend_bg">
+   </div>
+   <div class="friend_opacity">
+       <a href="" onclick="add_friend()">ADD_F</a>
+       <div class="friend_box">
+           <img src="../../res/head.png" alt="" class="friend_logo">
+           <div class="friend_detail">
+               <p>yih</p>
+               <p>光阴似箭，岁月如梭光阴似箭，岁月如梭光阴似箭，岁月如梭光阴似箭，岁月如梭光阴似箭，岁月如梭光阴似箭，岁月如梭</p>
+               <div class="common_friend">
+                   <p><span>2</span>位共同好友</p>
+                   <p><img src="../../res/head.png" alt=""><img src="../../res/head.png" alt=""></p>
+               </div>
+           </div>
+       </div>
+       <div class="friend_box">
+           <img src="../../res/head.png" alt="" class="friend_logo">
+           <div class="friend_detail">
+               <p>yih</p>
+               <p>光阴似箭，岁月如梭光阴似箭，岁月如梭光阴似箭，岁月如梭光阴似箭，岁月如梭光阴似箭，岁月如梭光阴似箭，岁月如梭</p>
+               <div class="common_friend">
+                   <p><span>16</span>位共同好友</p>
+                   <p><img src="../../res/head.png" alt=""><img src="../../res/head.png" alt="">.......</p>
+               </div>
+           </div>
+       </div>
+   </div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+
+    apiready = function(){
+		
+    };
+    function add_friend(){
+        api.openWin({
+					    name: 'add_friend',
+					    url: 'add_friend.html'
+					});
+    }
+</script>
+</html>

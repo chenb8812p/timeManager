@@ -1,0 +1,118 @@
+.logo_bg{
+    background: url('../res/logo.png') repeat-y;
+	background-size:100% 30rem;
+	width:100%;
+	min-height: 30rem;	
+}
+
+.logo_opacity{
+	padding-top: 2rem;
+	position: absolute;
+    top:0;
+	z-index: 200;
+	background-color: #7471bd;
+	opacity: 0.5;
+	width:100%;
+	min-height: 30rem;
+}
+.logo_text{
+	color:#ffffff;
+	text-align: center;
+	font-size: 1rem;
+}
+.logo_text span{
+	font-size: 2rem;
+	display: block;
+    margin-bottom: 1.3rem;
+    font-weight: bold;
+}
+.logo_text p{
+	width:90%;
+	margin:0 auto;
+}
+
+.logo_box a{
+   color:#ffffff;
+   border:1px solid #ffffff;
+   height:3rem;
+   line-height: 3rem;
+   text-align: center;
+   width:30%;
+   border-radius: 3rem;
+   margin-top:7rem;
+
+}
+.logo_a{
+   float:left;
+   margin-left:2rem;
+}
+.register_a{
+	float:right;
+	margin-right:2rem;
+}
+
+.log_reg{
+	position: absolute;
+	top:1rem;
+	width:100%;
+	text-align: center;
+
+}
+.log_reg input[type="text"],.log_reg input[type="password"]{
+   border:1px solid #ffffff;
+   border-radius: 3rem;
+   width:90%;
+   height:3rem;
+   line-height: 3rem;
+   font-size: 1.2rem;
+   color:#000000;
+   padding-left:1rem;
+  
+}
+.log_form,.reg_form{
+	margin: 0.5rem auto;
+	width:90%;
+	color:#ffffff;
+}
+.log_reg p{
+	 margin: 2rem auto;
+}
+.p_text{
+	font-size: 3rem;
+
+}
+.log_reg input[type="checkbox"]{
+	float:left;
+	width:1.5rem;
+	height: 1.5rem;
+	margin-left: 1.5rem;
+
+}
+.log_reg label{
+	float:left;
+	margin-top:-0.1rem;
+	font-size: 1.2rem;
+	margin-left: 0.5rem;
+}
+.clear{
+	clear:both;
+}
+.logo_go input,.reg_go input{
+	display: block;
+	border:1px solid #ffffff;
+	height:2.5rem;
+	line-height: 2.5rem;
+	text-align: center;
+	width:80%;
+	border-radius:3rem;
+	margin:5rem auto;
+	font-size:1.2rem;
+	color:#666666;
+	background-color: #ffffff;
+}
+.reg_go input{
+	margin:2rem auto;
+}
+.none{
+	display:none;
+}

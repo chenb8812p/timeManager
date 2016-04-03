@@ -1,0 +1,81 @@
+.top_fixed{
+	color:#ffffff;
+	position: relative;
+	background-color:#423d7f;
+	width:100%; 
+	
+}
+
+.top_fixed header{
+	text-align: center;
+	height: 4rem;
+	line-height: 4rem;
+	width: 100%;
+	font-size: 2rem;
+}
+.top_fixed a{
+	/*去除a标签的下划线*/
+    text-decoration:none;
+}
+.top_fixed header a{
+	
+    color:#ffffff;
+}
+.top_fixed header a{
+	width:4rem;
+	height: 4rem;
+    position: absolute;
+}
+.a_set{
+	left:0;
+	background: url('../res/gear19.ico') no-repeat center;
+	background-size:2rem; 
+}
+.a_add{
+	right:0;
+	background: url('../res/a_add.png') no-repeat center;
+}
+.input_box{
+	padding-left:3rem;
+	padding-bottom: 3rem;
+	margin-top: 1rem;
+	background:url('../res/input_box.png') no-repeat 1rem 0.6rem; 
+	background-size: 1.2rem;
+}
+.input_box input{
+	padding-left: 0.5rem;
+	background-color:#4a4486;
+	border:0px;
+	display: block;
+	width:80%;
+	height:2rem;
+}
+
+#under_line{
+	border-bottom: 1px solid #ffffff;
+}
+.switch_nav{
+	top: 10rem;
+	position: absolute;
+	z-index:2000;
+	background-color: #8e87ea;
+	border-radius: 3rem;
+    height: 3rem;
+    width: 15rem;
+    margin-left: 0.5rem;
+}
+.switch_nav a{
+	float:left;
+	width:30%;
+	/*border:1px solid #ffffff;*/
+	border-radius: 2rem;
+	height:3rem;
+	line-height: 3rem;
+	text-align: center;
+	margin-left:2.5%;
+	color:#ffffff;
+}
+.nav_hover a{
+	background-color: #ffffff;
+	color:#8e87ea;
+}
