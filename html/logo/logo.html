@@ -33,7 +33,7 @@
        <p class="p_text">register</p>
        <p><input type="text" placeholder="usename"></p>
        <p><input type="password" placeholder="password" class="psw"></p>
-       <p><input type="password" placeholder="repassword"></p>
+       <p><input type="password" placeholder="repassword" class="rpsw"></p>
        <p class="clear reg_go"><input type="button" value="register    >>"/></p>
      </form>
   </div>
@@ -44,14 +44,14 @@
 <script type="text/javascript" src="../../script/zepto.js"></script>
 <script type="text/javascript" src="../../script/constants.js"></script>
 <script type="text/javascript">
-  //logo_ajax 
+  //login_ajax 
   $('.logo_go input').on('click', function(){
     var 
         usename = $('.log_form input[type="text"]').val(),
         password = $('.log_form input[type="password"]').val();
 	    if(usename != '' && password != '' && usename != null && password != null){
           api.ajax({
-            url: '192.168.137.1/json/logo.json',
+            url: LOGOIN,
             method: 'get',
             data: {
                 values: { 
@@ -63,7 +63,11 @@
               if (ret.code == 0) {
                   console.log("code == 0");
                   localStorage.setItem('userId',ret.data.userId);
-                  window.location.href = '../../index.html';
+                  //登录成功之后打开首页
+                  api.openWin({
+		              name: 'index',
+		              url: '../../index.html'
+		          });        
                   api.sendEvent({
                       name: 'Login'
                   });
@@ -88,15 +92,52 @@
     var 
        r_usename = $('.reg_form input').val(),
        r_password = $('.psw').val(),
-       r_psw = $('.psw').next().val();
-    // if(r_usename != '' && r_password != '' && r_psw != ''){
-      
-    // }else{
+       r_psw = $('.rpsw').val();
+       console.log(r_password);
+       console.log(r_psw);
+       if(r_usename != '' && r_password != '' && r_psw != ''){
+          if( r_password == r_psw ){
+              api.ajax({
+	            url: REGISTER,
+	            method: 'get',
+	            data: {
+	                values: { 
+	                  usename: r_usename,
+	                  password: r_psw
+	                }
+	            }
+	            },function(ret, err){
+	              if (ret.code == 0) {
+	                  console.log("code == 0");
+	                  localStorage.setItem('userId',ret.data.userId);
+	                  $('.reg_form').hide();
+				      $('.logo_text').show();
+				      $('.logo_box').show();
+	                  api.sendEvent({
+	                      name: 'register'
+	                  });
+	                  api.alert({msg: "注册成功！"});
+	              } else {
+	                  console.log("ajax没有发送");
+	              }
+             });
 
-    // };
-
-
+          }else{
+              api.toast({
+	              msg: '两次密码输入的不一致！！',
+	              duration: 2000,
+	              location: 'bottom'
+              });
+          }
+       }else{
+           api.toast({
+              msg: '用户名或密码不能为空！！',
+              duration: 2000,
+              location: 'bottom'
+          });
+       };
   });
+  
   $('.logo_a').on('click' , function(ev){
     $('.log_form').show();
     $('.logo_text').hide(); 
@@ -107,7 +148,7 @@
     $('.logo_text').hide();
     $('.logo_box').hide();
   });
-  // logo_ajax
+
   
 </script>
 </html>
